@@ -1,4 +1,8 @@
 # Password Generator Starter Code
+<<<<<<< HEAD
+=======
+
+>>>>>>> deecdfbaee228dd15bdf88d673b96428a2faa694
 GIVEN I need a new, secure password
 WHEN I click the button to generate a password
 THEN I am presented with a series of prompts for password criteria
@@ -13,4 +17,8 @@ THEN my input should be validated and at least one character type should be sele
 WHEN all prompts are answered
 THEN a password is generated that matches the selected criteria
 WHEN the password is generated
+<<<<<<< HEAD
 THEN the password is either displayed in an alert or written to the page
+=======
+THEN the password is either displayed in an alert or written to the page
+>>>>>>> deecdfbaee228dd15bdf88d673b96428a2faa694
