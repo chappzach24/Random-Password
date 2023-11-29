@@ -82,15 +82,15 @@ var special = [
   "/",
   ":",
   ";",
-  " < ",
+  "<",
   "=",
-  " > ",
-  " ? ",
+  ">",
+  "?",
   "@",
   "[",
   "\\",
   "]",
-  " ^ ",
+  "^",
   "_",
   "`",
   "{",
@@ -107,19 +107,16 @@ function writePassword() {
   passwordText.value = password;
 }
 function generatePassword() {
-var length = question();
-  
+  var length = question();
 }
 
 function question() {
+  //picks number 8-128
   var length = window.prompt("Pick a number from 8-128.");
   var lengthNumber = parseInt(length);
   console.log(lengthNumber);
   console.log(typeof lengthNumber);
 
-  // if (length >= 8 && length <= 128){
-  //   console.log("great you picked " + length);
-  // }
   if (Number.isNaN(lengthNumber)) {
     alert("You have to enter a number");
     return;
@@ -132,6 +129,7 @@ function question() {
   //picks if user wants upper case
   var isUpper = window.confirm("Would you like upper case letters?");
 
+  //picks if user wants lower case
   var isLower = window.confirm("Would you like lower case letters?");
 
   //picks if user wants special case
@@ -139,23 +137,23 @@ function question() {
 
   //picks if user wants numbers
   var isNumber = window.confirm("Would you like numbers?");
- 
-  if(isUpper){
-    bowl = bowl.concat(upper)
+
+  //converts user data into a one "bowl"
+  if (isUpper) {
+    bowl = bowl.concat(upper);
   }
-  if(isLower){
-    bowl = bowl.concat(lower)
+  if (isLower) {
+    bowl = bowl.concat(lower);
   }
-  if(isSpecial){
-    bowl = bowl.concat(special)
+  if (isSpecial) {
+    bowl = bowl.concat(special);
   }
-  if(isNumber){
-    bowl = bowl.concat(number)
+  if (isNumber) {
+    bowl = bowl.concat(number);
   }
   console.log(bowl);
   return lengthNumber;
 }
-//picks number 8-128
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
