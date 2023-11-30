@@ -1,103 +1,13 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
-var lower;
-var upper;
-var special;
-var number;
-var length;
-var bowl = [];
-
-var lower = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
-var upper = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var special = [
-  "!",
-  "#",
-  "$",
-  "%",
-  "&",
-  "'",
-  "(",
-  ")",
-  "*",
-  "+",
-  ",",
-  "-",
-  ".",
-  "/",
-  ":",
-  ";",
-  "<",
-  "=",
-  ">",
-  "?",
-  "@",
-  "[",
-  "\\",
-  "]",
-  "^",
-  "_",
-  "`",
-  "{",
-  "|",
-  "}",
-  "~",
-];
+var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCase = "abcdefghijklmnopqrstuvwxyz";
+var specialChars = "!@#$%^&*()_+-=[]{}|;:,.<>/?";
+var numbers = "1234567890";
+var wholeString = []
 
 // Write password to the #password input
 function writePassword() {
@@ -106,26 +16,46 @@ function writePassword() {
 
   passwordText.value = password;
 }
-function generatePassword() {
-  var length = question();
+
+
+function getRandomNum(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function question() {
+
+function generatePassword() {
+  var length = lengthQuestion();
+  var characters = characterQuestion();
+  pwString = []
+  
+  for(var i=0; i < length; i++){
+    pwString.push(characters[getRandomNum(0,(characters.length)-1)])
+  }
+  return pwString.join("")
+}
+
+function lengthQuestion() {
   //picks number 8-128
   var length = window.prompt("Pick a number from 8-128.");
   var lengthNumber = parseInt(length);
   console.log(lengthNumber);
-  console.log(typeof lengthNumber);
 
+  //checks to see if user put in a number or somthing else
   if (Number.isNaN(lengthNumber)) {
     alert("You have to enter a number");
     return;
   }
+  //checks if number is a good value 
   if (lengthNumber < 8 && lengthNumber > 128) {
     alert("that is not a good number");
     return;
   }
+  return lengthNumber
+}
 
+function characterQuestion() {
   //picks if user wants upper case
   var isUpper = window.confirm("Would you like upper case letters?");
 
@@ -138,22 +68,22 @@ function question() {
   //picks if user wants numbers
   var isNumber = window.confirm("Would you like numbers?");
 
-  //converts user data into a one "bowl"
+  //if user said yes to the above it will push into new string
   if (isUpper) {
-    bowl = bowl.concat(upper);
+    wholeString.push(upperCase);
   }
   if (isLower) {
-    bowl = bowl.concat(lower);
+    wholeString.push(lowerCase);
   }
   if (isSpecial) {
-    bowl = bowl.concat(special);
+    wholeString.push(specialChars);
   }
   if (isNumber) {
-    bowl = bowl.concat(number);
+    wholeString.push(numbers);
   }
-  console.log(bowl);
-  return lengthNumber;
-}
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+  var wholePasswordString = wholeString.join("").split("")
+  console.log(wholePasswordString)
+
+  return wholePasswordString
+}
