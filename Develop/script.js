@@ -42,12 +42,12 @@ function lengthQuestion() {
   var lengthNumber = parseInt(length);
   console.log(lengthNumber);
 
-  //checks to see if user put in a number or somthing else
+  //checks to see if user put in a somthing thats not a number
   if (Number.isNaN(lengthNumber)) {
     alert("You have to enter a number");
     return;
   }
-  //checks if number is a good value 
+  //checks if number is a good value
   if (lengthNumber < 8 && lengthNumber > 128) {
     alert("that is not a good number");
     return;
