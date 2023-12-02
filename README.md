@@ -5,9 +5,9 @@ The motivation behind this project was to develop a user-friendly website that e
 
 
 
-To view project [Random-password](https://github.com/chappzach24/Random-Password/blob/main/Develop/random-pass.png)
+To view project [Random-password](https://chappzach24.github.io/Random-Password/)
 
-![alt text](https://chappzach24.github.io/Random-Password/)
+![alt text](https://github.com/chappzach24/Random-Password/blob/main/Develop/random-pass.png)
 
 Clone the Repository: git@github.com:chappzach24/Random-Password.git
  Navigate to the Project Directory: 
